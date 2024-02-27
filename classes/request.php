@@ -21,6 +21,10 @@ class request{
     public function checkMethod($key){
         return $_SERVER['REQUEST_METHOD'];
     }
+
+    public function redirect($file){
+        return header("location:$file");
+    }
     
 }
 

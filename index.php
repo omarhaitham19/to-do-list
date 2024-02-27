@@ -12,15 +12,17 @@ require_once "inc/connection.php";
                         <form action="handle/addToDo.php" method="post">
                         <textarea type="text" class="form-control" rows="3" name="title" id="" placeholder="enter your note here"></textarea>
                         <div class="text-center">
-                            <button type="submit" name="submit" class="form-control text-white bg-info mt-3 " >Add To Do</button>
+                            <button type="submit" name="submit" class="form-control text-white bg-info mt-3">Add To Do</button>
                         </div>
                         </form>
                     </div>
-                </div>
-               
-
+                </div>               
         </div>
         <div class="row d-flex justify-content-between">   
+            <?php
+            require_once "inc/errors.php";
+            require_once "inc/success.php";
+            ?>
             <!-- all -->
             <div class="col-md-3 "> 
                 <h4 class="text-white">To Do</h4>
@@ -28,7 +30,7 @@ require_once "inc/connection.php";
                 <div class="m-2  py-3">
                     <div class="show-to-do">
                             <?php
-                            $query = "SELECT * FROM `todo` WHERE `status` = 'todo'";
+                            $query = "SELECT * FROM `todo` WHERE `status` = 'todo' ORDER BY `id` DESC";
                             $runQuery = $con->query($query);
                             if ($runQuery->rowCount() > 0) {
                                 while ($todo = $runQuery->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -70,7 +72,7 @@ require_once "inc/connection.php";
                     <div class="show-to-do">
                             <?php
 
-                            $query = "SELECT * FROM `todo` WHERE `status` = 'doing'";
+                            $query = "SELECT * FROM `todo` WHERE `status` = 'doing' ORDER BY `id` DESC";
                             $runQuery = $con->query($query);
                             if ($runQuery->rowCount() > 0) {
                                 while ($doing = $runQuery->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -111,7 +113,7 @@ require_once "inc/connection.php";
                             
                             <?php
 
-                            $query = "SELECT * FROM `todo` WHERE `status` = 'done'";
+                            $query = "SELECT * FROM `todo` WHERE `status` = 'done' ORDER BY `id` DESC";
                             $runQuery = $con->query($query);
                             if ($runQuery->rowCount() > 0) {
                                 while ($done = $runQuery->fetch(PDO::FETCH_ASSOC)) { ?>
