@@ -1,5 +1,4 @@
 <?php
-require_once 'inc/connection.php';
 require_once 'App.php';
 ?>
 <!DOCTYPE html>

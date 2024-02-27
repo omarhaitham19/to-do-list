@@ -1,5 +1,6 @@
 <?php 
 require_once 'inc/header.php';
+require_once "inc/connection.php";
 ?>
 <body>
     
@@ -22,28 +23,38 @@ require_once 'inc/header.php';
         <div class="row d-flex justify-content-between">   
             <!-- all -->
             <div class="col-md-3 "> 
-                <h4 class="text-white">All Notes</h4>
+                <h4 class="text-white">To Do</h4>
 
-                
                 <div class="m-2  py-3">
                     <div class="show-to-do">
+                            <?php
+                            $query = "SELECT * FROM `todo` WHERE `status` = 'todo'";
+                            $runQuery = $con->query($query);
+                            if ($runQuery->rowCount() > 0) {
+                                while ($todo = $runQuery->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                            <div class="alert alert-info p-2">
+                                <h4><?php echo $todo['title']?></h4>
+                                <h5><?php echo $todo['created_at']?></h5>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <a href="#"class="btn btn-info p-1 text-white" >edit</a>
+                                    <a href="#"class="btn btn-info p-1 text-white" >doing</a>
+                                </div>
+                            </div>
+                                    <?php
+                                }
+                            }else{
+                                ?>
 
                             <div class="item">
                                 <div class="alert-info text-center ">
                                  empty to do
                                 </div>
                             </div>
-                    
-                        <div class="alert alert-info p-2">
-                                <h4 >title</h4>
-                                <h5>created_At</h5>
-                                <div class="d-flex justify-content-between mt-3">
-                                    <a href="#"class="btn btn-info p-1 text-white" >edit</a>
-                                   
-                                    <a href="#"class="btn btn-info p-1 text-white" >doing</a>
-                                </div>
-                            
-                        </div>
+                                <?php
+                            }
+                              ?>
+                        
                     </div>
                 </div>
 
@@ -57,23 +68,34 @@ require_once 'inc/header.php';
                 
                 <div class="m-2 py-3">
                     <div class="show-to-do">
+                            <?php
 
-                   
-                            <div class="item">
-                                <div class="alert-success text-center ">
-                                 empty to do
-                                </div>
-                            </div>
-                    
+                            $query = "SELECT * FROM `todo` WHERE `status` = 'doing'";
+                            $runQuery = $con->query($query);
+                            if ($runQuery->rowCount() > 0) {
+                                while ($doing = $runQuery->fetch(PDO::FETCH_ASSOC)) { ?>
+
                         <div class="alert alert-success p-2">
-                                <h4 >title</h4>
-                                <h5>created_at</h5>
+                                <h4><?php echo $doing['title']?></h4>
+                                <h5><?php echo $doing['created_at']?></h5>
                                 <div class="d-flex justify-content-between mt-3">
                                     <a></a>
                                     <a href="#"class="btn btn-success p-1 text-white" >Done</a>
                                 </div>
-                            
                         </div>
+                        <?php
+                                }
+                            }else{
+                                ?>
+
+                            <div class="item">
+                                <div class="alert-info text-center ">
+                                 empty to do
+                                </div>
+                            </div>
+                                <?php
+                            }
+                              ?>
                     </div>
                 </div>
             
@@ -86,19 +108,30 @@ require_once 'inc/header.php';
                 <div class="m-2 py-3">
                     <div class="show-to-do">
 
-                            <div class="item">
-                                <div class="alert-warning text-center ">
-                                 empty to do
-                                </div>
-                            </div>
-                    
+                            
+                            <?php
+
+                            $query = "SELECT * FROM `todo` WHERE `status` = 'done'";
+                            $runQuery = $con->query($query);
+                            if ($runQuery->rowCount() > 0) {
+                                while ($done = $runQuery->fetch(PDO::FETCH_ASSOC)) { ?>
+
                         <div class="alert alert-warning p-2">
                                 <a href="#" onclick="confirm('are your sure')"  class="remove-to-do text-dark d-flex justify-content-end " ><i class="fa fa-close" style="font-size:16px;"></i></a>                                                                
-                                <h4 >title</h4>
-                               <h5>created_At</h5>
-                               
-                            
+                                <h4><?php echo $done['title']?></h4>
+                               <h5><?php echo $done['created_at']?></h5>
+
                         </div>
+                        <?php }}else{ ?>
+                            <div class="item">
+                            <div class="alert-warning text-center ">
+                             empty to do
+                            </div>
+                        </div>
+                        <?php
+
+                        } ?>
+
                     </div>
                 </div>
             </div>
