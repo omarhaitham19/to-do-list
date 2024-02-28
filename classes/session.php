@@ -16,7 +16,7 @@ class session{
     }
 
     public function get($key){
-        return isset($_SESSION[$key]) ? $_SESSION[$key] : "not found";
+        return isset($_SESSION[$key]) ? $_SESSION[$key] : null;
     }
 
     public function remove($key){
