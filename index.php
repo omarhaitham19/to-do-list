@@ -39,7 +39,7 @@ require_once "inc/connection.php";
                                 <h4><?php echo $todo['title']?></h4>
                                 <h5><?php echo $todo['created_at']?></h5>
                                 <div class="d-flex justify-content-between mt-3">
-                                    <a href="#"class="btn btn-info p-1 text-white" >edit</a>
+                                    <a href="edit.php?id=<?php echo $todo['id']?>"class="btn btn-info p-1 text-white" >edit</a>
                                     <a href="#"class="btn btn-info p-1 text-white" >doing</a>
                                 </div>
                             </div>

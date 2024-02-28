@@ -13,10 +13,10 @@ if ($request->check($request->post("submit"))) {
         $stmt->bindParam(":title" , $title , PDO::PARAM_STR);
         $result =  $stmt->execute();
         if ($result) {
-            $session->set("success" , "Data inserted successfully");
+            $session->set("success" , ["Data inserted successfully"]);
             $request->redirect("../index.php");
         }else{
-            $session->set("errors" , "error while insert");
+            $session->set("errors" , ["error while insert"]);
             $request->redirect("../index.php");
         }
      }else{
