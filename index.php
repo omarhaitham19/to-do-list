@@ -119,7 +119,7 @@ require_once "inc/connection.php";
                                 while ($done = $runQuery->fetch(PDO::FETCH_ASSOC)) { ?>
 
                         <div class="alert alert-warning p-2">
-                                <a href="#" onclick="confirm('are your sure')"  class="remove-to-do text-dark d-flex justify-content-end " ><i class="fa fa-close" style="font-size:16px;"></i></a>                                                                
+                                <a href="handle/delete.php?id=<?php echo $done['id'] ?>" onclick="confirm('are your sure')"  class="remove-to-do text-dark d-flex justify-content-end " ><i class="fa fa-close" style="font-size:16px;"></i></a>                                                                
                                 <h4><?php echo $done['title']?></h4>
                                <h5><?php echo $done['created_at']?></h5>
 
