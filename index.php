@@ -40,7 +40,7 @@ require_once "inc/connection.php";
                                 <h5><?php echo $todo['created_at']?></h5>
                                 <div class="d-flex justify-content-between mt-3">
                                     <a href="edit.php?id=<?php echo $todo['id']?>"class="btn btn-info p-1 text-white" >edit</a>
-                                    <a href="#"class="btn btn-info p-1 text-white" >doing</a>
+                                    <a href="handle/goto.php?status=doing&id=<?php echo $todo['id']?>"class="btn btn-info p-1 text-white" >doing</a>
                                 </div>
                             </div>
                                     <?php
@@ -82,7 +82,7 @@ require_once "inc/connection.php";
                                 <h5><?php echo $doing['created_at']?></h5>
                                 <div class="d-flex justify-content-between mt-3">
                                     <a></a>
-                                    <a href="#"class="btn btn-success p-1 text-white" >Done</a>
+                                    <a href="handle/goto.php?status=done&id=<?php echo $doing['id'] ?>"class="btn btn-success p-1 text-white" >Done</a>
                                 </div>
                         </div>
                         <?php
