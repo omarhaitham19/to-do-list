@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2024 at 03:30 PM
+-- Generation Time: Mar 02, 2024 at 03:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,9 +39,9 @@ CREATE TABLE `todo` (
 --
 
 INSERT INTO `todo` (`id`, `title`, `status`, `created_at`) VALUES
-(20, 'task one', 'todo', '2024-02-28 14:56:00'),
 (22, 'task two', 'doing', '2024-02-28 14:57:06'),
-(24, 'task three', 'done', '2024-02-29 14:08:48');
+(24, 'task three', 'done', '2024-02-29 14:08:48'),
+(25, 'task one', 'todo', '2024-03-02 14:34:10');
 
 --
 -- Indexes for dumped tables
@@ -51,7 +51,8 @@ INSERT INTO `todo` (`id`, `title`, `status`, `created_at`) VALUES
 -- Indexes for table `todo`
 --
 ALTER TABLE `todo`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `title` (`title`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -61,7 +62,7 @@ ALTER TABLE `todo`
 -- AUTO_INCREMENT for table `todo`
 --
 ALTER TABLE `todo`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
