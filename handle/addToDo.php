@@ -24,16 +24,6 @@ if ($request->check($request->post("submit"))) {
         $request->redirect("../index.php");
     }
 
-
-    
 }else{
     $request->redirect("../index.php");
 }
-
-
-// validate
-
-// insert 
-
-// errors
-
